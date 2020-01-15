@@ -13,15 +13,8 @@
     <form class="form-inline my-2 my-lg-0">
     <ul class="navbar-nav mr-auto">
       <li class="nav-link pointer"><a class="nav-link pointer" @click="endDay">End Day</a></li>
-      <li class="nav-item nav-link dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Save / Load
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Save Data</a>
-          <a class="dropdown-item" href="#">Load Data</a>
-        </div>
-      </li>
+      <li class="nav-link pointer"><a class="nav-link pointer" @click="saveData">Save</a></li>
+      <li class="nav-link pointer"><a class="nav-link pointer" @click="loadData">Load</a></li>
       <li class="nav-item nav-link"><strong class="nav-link" style="color: white;">Funds: {{ funds | currency }}</strong></li>
     </ul>
     </form>
@@ -40,11 +33,23 @@ import {mapActions} from 'vuex';
       }
     },
     methods: {
-      ...mapActions([
-        'randomizeStocks'
-      ]),
+      ...mapActions({
+        randomizeStocks: 'randomizeStocks',
+        fetchData: 'loadData'
+      }),
       endDay() {
         this.randomizeStocks();
+      },
+      saveData () {
+        const data = {
+          funds: this.$store.getters.funds,
+          stockPortfolio: this.$store.getters.stockPortfolio,
+          stocks: this.$store.getters.stocks
+        };
+        this.$http.put('data.json', data);
+      },
+      loadData() {
+        this.fetchData();
       }
     }
   }
