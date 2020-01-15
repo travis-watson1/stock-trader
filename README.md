@@ -1,6 +1,8 @@
 # vue-cli
 
-> A Vue.js project
+# Stock Trader
+
+Stock Trader is a simple Vue application that uses Bootstrap, Vuex, vue-router, vue-resource, with an express server for Heroku. The app allows the saving and loading of data using Firebase. 
 
 ## Build Setup
 
@@ -15,4 +17,13 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Deployed App
+
+https://stock-trader-travis-watson.herokuapp.com
+
+## Screenshots
+
+<div align="center">
+    <img src="https://i.postimg.cc/9MwWhd3k/stock-trader1.png" width="400px"</img>
+    <img src="https://i.postimg.cc/Gp5cVMfY/stock-trader2.png" width="400px"</img> 
+</div>
